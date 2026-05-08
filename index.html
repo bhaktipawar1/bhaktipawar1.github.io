@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Bhakti Pawar | Associate Professor & Economist</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            saffron: '#E07B39',
+            terracotta: '#C45E2A',
+            gold: '#D4A853',
+            cream: '#F5EFE0',
+            parchment: '#EDE3CC',
+            ink: '#1A1410',
+            ash: '#2C2420',
+            bark: '#4A3728',
+            moss: '#3D4A30',
+          },
+          fontFamily: {
+            display: ['Cinzel', 'serif'],
+            serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+            sans: ['DM Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --saffron: #E07B39;
+      --gold: #D4A853;
+      --cream: #F5EFE0;
+      --ink: #1A1410;
+      --ash: #2C2420;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: #1A1410;
+      color: #F5EFE0;
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Grain texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.35;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #1A1410; }
+    ::-webkit-scrollbar-thumb { background: #E07B39; border-radius: 3px; }
+
+    /* Navbar */
+    #navbar {
+      transition: all 0.4s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(26, 20, 16, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(224, 123, 57, 0.2);
+    }
+
+    .nav-link {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #EDE3CC;
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #E07B39;
+      transition: width 0.3s;
+    }
+    .nav-link:hover { color: #E07B39; }
+    .nav-link:hover::after { width: 100%; }
+
+    /* Hero */
+    .hero-bg {
+      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(224,123,57,0.12) 0%, transparent 65%),
+                  radial-gradient(ellipse 50% 50% at 20% 80%, rgba(212,168,83,0.07) 0%, transparent 60%),
+                  #1A1410;
+    }
+
+    .hero-line {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, #E07B39, #D4A853);
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 12px;
+    }
+
+    /* Typing cursor */
+    .cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1em;
+      background: #E07B39;
+      margin-left: 3px;
+      vertical-align: middle;
+      animation: blink 0.8s step-end infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* Floating shapes */
+    .float-shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.06;
+      animation: floatAnim 8s ease-in-out infinite;
+    }
+    @keyframes floatAnim {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Section headers */
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #E07B39;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    /* Cards */
+    .card {
+      background: rgba(44, 36, 32, 0.5);
+      border: 1px solid rgba(212, 168, 83, 0.12);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+    .card:hover {
+      border-color: rgba(224, 123, 57, 0.35);
+      background: rgba(44, 36, 32, 0.75);
+      transform: translateY(-3px);
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212,168,83,0.3), transparent);
+    }
+
+    /* Timeline */
+    .timeline-dot {
+      width: 10px;
+      height: 10px;
+      background: #E07B39;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 5px;
+      box-shadow: 0 0 12px rgba(224, 123, 57, 0.5);
+    }
+    .timeline-line {
+      position: absolute;
+      left: 4px;
+      top: 14px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, rgba(224,123,57,0.4), transparent);
+    }
+
+    /* Pub tag */
+    .pub-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      padding: 2px 8px;
+      border-radius: 1px;
+      text-transform: uppercase;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* Stats */
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 300;
+      color: #E07B39;
+      line-height: 1;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border: 1px solid rgba(224,123,57,0.3);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: #D4A853;
+      border-radius: 1px;
+    }
+
+    /* Mobile menu */
+    #mobile-menu {
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      max-height: 0;
+      overflow: hidden;
+    }
+    #mobile-menu.open {
+      max-height: 400px;
+    }
+
+    /* Hamburger */
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #EDE3CC;
+      transition: all 0.3s;
+      transform-origin: center;
+    }
+    .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* Fade-in animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mandala decorative */
+    .mandala {
+      position: absolute;
+      opacity: 0.04;
+      animation: spin 60s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Section bg alt */
+    .section-alt {
+      background: rgba(44, 36, 32, 0.3);
+    }
+
+    /* Progress bar for skills */
+    .skill-bar-fill {
+      height: 2px;
+      background: linear-gradient(90deg, #E07B39, #D4A853);
+      border-radius: 1px;
+      transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 0;
+    }
+
+    /* Button */
+    .btn-primary {
+      background: linear-gradient(135deg, #E07B39, #C45E2A);
+      color: #F5EFE0;
+      padding: 12px 32px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 1px;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #C45E2A, #E07B39);
+      box-shadow: 0 8px 30px rgba(224, 123, 57, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(224,123,57,0.5);
+      color: #E07B39;
+      padding: 12px 32px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 1px;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+    .btn-outline:hover {
+      background: rgba(224,123,57,0.1);
+      border-color: #E07B39;
+      transform: translateY(-2px);
+    }
+
+    /* Lotus icon accent */
+    .accent-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .accent-line::before, .accent-line::after {
+      content: '';
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, transparent, rgba(212,168,83,0.4));
+    }
+    .accent-line::after {
+      background: linear-gradient(90deg, rgba(212,168,83,0.4), transparent);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-5 px-6 md:px-12">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="#home" class="font-display text-sm tracking-widest text-cream uppercase">Dr. Bhakti Pawar</a>
+
+      <!-- Desktop nav -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#research" class="nav-link">Research</a>
+        <a href="#publications" class="nav-link">Publications</a>
+        <a href="#achievements" class="nav-link">Achievements</a>
+        <a href="mailto:bhaktijit5eco@gmail.com" class="btn-primary text-xs py-2 px-5">Connect</a>
+      </div>
+
+      <!-- Hamburger -->
+      <button id="hamburger-btn" class="hamburger md:hidden flex flex-col gap-1.5 p-2" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden">
+      <div class="bg-ash border-t border-gold/10 mt-4 py-4 px-6 flex flex-col gap-5">
+        <a href="#about" class="nav-link mobile-nav-link">About</a>
+        <a href="#experience" class="nav-link mobile-nav-link">Experience</a>
+        <a href="#research" class="nav-link mobile-nav-link">Research</a>
+        <a href="#publications" class="nav-link mobile-nav-link">Publications</a>
+        <a href="#achievements" class="nav-link mobile-nav-link">Achievements</a>
+        <a href="mailto:bhaktijit5eco@gmail.com" class="btn-primary text-center text-xs py-2.5 mt-2">Connect</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" class="hero-bg relative min-h-screen flex items-center overflow-hidden">
+
+    <!-- Decorative blobs -->
+    <div class="float-shape w-96 h-96 bg-saffron top-1/4 right-1/4" style="animation-delay:-2s;"></div>
+    <div class="float-shape w-64 h-64 bg-gold bottom-1/4 left-1/3" style="animation-delay:-4s;"></div>
+
+    <!-- Mandala SVG -->
+    <svg class="mandala w-[600px] h-[600px] -right-40 top-1/2 -translate-y-1/2" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="90" stroke="#D4A853" stroke-width="0.5"/>
+      <circle cx="100" cy="100" r="70" stroke="#D4A853" stroke-width="0.5"/>
+      <circle cx="100" cy="100" r="50" stroke="#D4A853" stroke-width="0.5"/>
+      <circle cx="100" cy="100" r="30" stroke="#D4A853" stroke-width="0.5"/>
+      <line x1="100" y1="10" x2="100" y2="190" stroke="#D4A853" stroke-width="0.3"/>
+      <line x1="10" y1="100" x2="190" y2="100" stroke="#D4A853" stroke-width="0.3"/>
+      <line x1="37" y1="37" x2="163" y2="163" stroke="#D4A853" stroke-width="0.3"/>
+      <line x1="163" y1="37" x2="37" y2="163" stroke="#D4A853" stroke-width="0.3"/>
+      <line x1="10" y1="64" x2="190" y2="136" stroke="#D4A853" stroke-width="0.2"/>
+      <line x1="64" y1="10" x2="136" y2="190" stroke="#D4A853" stroke-width="0.2"/>
+      <line x1="10" y1="136" x2="190" y2="64" stroke="#D4A853" stroke-width="0.2"/>
+      <line x1="136" y1="10" x2="64" y2="190" stroke="#D4A853" stroke-width="0.2"/>
+      <polygon points="100,15 110,90 190,100 110,110 100,185 90,110 10,100 90,90" fill="none" stroke="#D4A853" stroke-width="0.3"/>
+    </svg>
+
+    <div class="max-w-6xl mx-auto px-6 md:px-12 pt-28 pb-20 w-full">
+      <div class="max-w-3xl">
+        <!-- Pre-title -->
+        <div class="flex items-center gap-3 mb-6 fade-up" style="transition-delay: 0.1s">
+          <span class="hero-line"></span>
+          <span class="section-label">Associate Professor · Economist · Yoga Practitioner</span>
+        </div>
+
+        <!-- Name -->
+        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-cream leading-none tracking-wide mb-2 fade-up" style="transition-delay: 0.2s">
+          Dr. Bhakti<br>
+          <span style="color: #E07B39;">Pawar</span>
+        </h1>
+
+        <!-- Typing animation -->
+        <div class="mt-6 mb-8 fade-up" style="transition-delay: 0.35s">
+          <p class="font-serif text-xl md:text-2xl text-parchment/80 italic font-light">
+            <span id="typed-text"></span><span class="cursor"></span>
+          </p>
+        </div>
+
+        <!-- Description -->
+        <p class="font-sans text-sm md:text-base text-cream/60 leading-relaxed max-w-xl mb-10 fade-up" style="transition-delay: 0.5s">
+          Ph.D. in Economics · MBA · M.Phil · Yoga Teacher · 15 years of academic excellence 
+          at the intersection of economics, management, and holistic leadership.
+          Currently at <span class="text-gold">Manav Rachna International Institute of Research Studies, Faridabad.</span>
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap gap-4 fade-up" style="transition-delay: 0.65s">
+          <a href="#publications" class="btn-primary">View Publications</a>
+          <a href="#about" class="btn-outline">Discover More</a>
+        </div>
+
+        <!-- Quick badges -->
+        <div class="flex flex-wrap gap-3 mt-10 fade-up" style="transition-delay: 0.8s">
+          <span class="badge">Scopus Indexed</span>
+          <span class="badge">IEEE Published</span>
+          <span class="badge">Wharton Certified</span>
+          <span class="badge">RBI Scholar</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+      <span class="font-sans text-xs tracking-widest uppercase text-cream/50">Scroll</span>
+      <div class="w-px h-12 bg-gradient-to-b from-saffron to-transparent"></div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="py-16 px-6 md:px-12 section-alt">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
+        <div class="text-center fade-up">
+          <div class="stat-number">15<span class="text-gold text-2xl">+</span></div>
+          <div class="font-sans text-xs text-cream/50 tracking-widest uppercase mt-1">Years Experience</div>
+        </div>
+        <div class="text-center fade-up" style="transition-delay:0.1s">
+          <div class="stat-number">23<span class="text-gold text-2xl">+</span></div>
+          <div class="font-sans text-xs text-cream/50 tracking-widest uppercase mt-1">Scopus Publications</div>
+        </div>
+        <div class="text-center fade-up" style="transition-delay:0.2s">
+          <div class="stat-number">10<span class="text-gold text-2xl">+</span></div>
+          <div class="font-sans text-xs text-cream/50 tracking-widest uppercase mt-1">Int'l Conferences</div>
+        </div>
+        <div class="text-center fade-up" style="transition-delay:0.3s">
+          <div class="stat-number">1</div>
+          <div class="font-sans text-xs text-cream/50 tracking-widest uppercase mt-1">Patent Published</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-24 px-6 md:px-12">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+
+        <!-- Text -->
+        <div>
+          <p class="section-label mb-3 fade-up">Who I Am</p>
+          <h2 class="section-title text-5xl md:text-6xl text-cream mb-6 fade-up">About<br><span class="text-saffron italic">Me</span></h2>
+          <div class="divider mb-8 fade-up" style="background: linear-gradient(90deg, rgba(224,123,57,0.4), transparent);"></div>
+          <div class="space-y-4 text-cream/70 font-sans text-sm leading-relaxed fade-up">
+            <p>
+              I am an Associate Professor at the <strong class="text-cream">School of Leadership and Management, Manav Rachna International Institute of Research Studies, Faridabad</strong>, with a deep academic grounding in Economics and Business Management.
+            </p>
+            <p>
+              My research sits at the crossroads of <strong class="text-gold">Ecotourism, FinTech, Machine Learning applications in Economics,</strong> and Sustainable Development — bridging traditional economic thought with data-driven innovation.
+            </p>
+            <p>
+              Beyond the classroom, I am a <strong class="text-cream">Professional Yoga Teacher and Practitioner</strong> — certified by the Indian Yoga Association at Kaivalyadhama, Lonavala — bringing mindfulness and holistic leadership into everything I do.
+            </p>
+          </div>
+
+          <div class="mt-8 fade-up">
+            <div class="accent-line text-saffron text-xs tracking-widest font-sans italic">
+              "Believe in Yourself"
+            </div>
+          </div>
+        </div>
+
+        <!-- Qualifications -->
+        <div class="space-y-4 fade-up">
+          <p class="section-label mb-5">Educational Qualifications</p>
+
+          <div class="card p-5">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-serif text-lg text-cream">Ph.D. — Economics</p>
+                <p class="font-sans text-xs text-cream/50 mt-1">Economics of Ecotourism in Kolhapur District</p>
+                <p class="font-sans text-xs text-gold mt-1">Shivaji University, Kolhapur</p>
+              </div>
+              <span class="font-serif text-saffron text-sm">2011</span>
+            </div>
+          </div>
+
+          <div class="card p-5">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-serif text-lg text-cream">MBA — Marketing</p>
+                <p class="font-sans text-xs text-cream/50 mt-1">Indira Gandhi National Open University</p>
+                <p class="font-sans text-xs text-gold mt-1">IGNOU · 68.26%</p>
+              </div>
+              <span class="font-serif text-saffron text-sm">2014</span>
+            </div>
+          </div>
+
+          <div class="card p-5">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-serif text-lg text-cream">M.Phil. — Economics</p>
+                <p class="font-sans text-xs text-cream/50 mt-1">Development of Ecotourism in & around Kolhapur</p>
+                <p class="font-sans text-xs text-gold mt-1">Shivaji University · Grade A</p>
+              </div>
+              <span class="font-serif text-saffron text-sm">2007</span>
+            </div>
+          </div>
+
+          <div class="card p-5">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-serif text-lg text-cream">B.A. — Economics</p>
+                <p class="font-sans text-xs text-gold mt-1">Shivaji University · 70.94% · <span class="text-saffron">1st Rank + Scholarship</span></p>
+              </div>
+              <span class="font-serif text-saffron text-sm">2000</span>
+            </div>
+          </div>
+
+          <div class="card p-5">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-serif text-lg text-cream">Yoga Instructor</p>
+                <p class="font-sans text-xs text-cream/50 mt-1">Kaivalyadhama Institute of Yoga, Lonavala</p>
+                <p class="font-sans text-xs text-gold mt-1">Indian Yoga Association · 71%</p>
+              </div>
+              <span class="font-serif text-saffron text-sm">2020</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- RESEARCH AREAS -->
+  <section id="research" class="py-24 px-6 md:px-12 section-alt">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="section-label mb-3 fade-up">Scholarly Focus</p>
+        <h2 class="section-title text-5xl md:text-6xl text-cream fade-up">Teaching &amp; <span class="text-saffron italic">Research</span></h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+        <!-- Cards with icons -->
+        <div class="card p-6 fade-up" style="transition-delay:0s">
+          <div class="text-3xl mb-3">🌿</div>
+          <h3 class="font-serif text-xl text-cream mb-2">Ecotourism & Environment</h3>
+          <p class="font-sans text-xs text-cream/55 leading-relaxed">Environmental economics, ecotourism development, ecological sustainability and rural development strategies.</p>
+        </div>
+        <div class="card p-6 fade-up" style="transition-delay:0.08s">
+          <div class="text-3xl mb-3">💹</div>
+          <h3 class="font-serif text-xl text-cream mb-2">FinTech & Banking</h3>
+          <p class="font-sans text-xs text-cream/55 leading-relaxed">Financial technology innovations, digital banking, FinTech startups, and rural banking enrichment.</p>
+        </div>
+        <div class="card p-6 fade-up" style="transition-delay:0.16s">
+          <div class="text-3xl mb-3">🤖</div>
+          <h3 class="font-serif text-xl text-cream mb-2">AI & Machine Learning</h3>
+          <p class="font-sans text-xs text-cream/55 leading-relaxed">Applying ML models to agriculture, finance, supply chain, and business analytics for predictive insights.</p>
+        </div>
+        <div class="card p-6 fade-up" style="transition-delay:0.24s">
+          <div class="text-3xl mb-3">📊</div>
+          <h3 class="font-serif text-xl text-cream mb-2">Managerial Economics</h3>
+          <p class="font-sans text-xs text-cream/55 leading-relaxed">Micro & macro economics, Indian economy, money & banking, international economics and marketing.</p>
+        </div>
+        <div class="card p-6 fade-up" style="transition-delay:0.32s">
+          <div class="text-3xl mb-3">🌱</div>
+          <h3 class="font-serif text-xl text-cream mb-2">Agribusiness Policy</h3>
+          <p class="font-sans text-xs text-cream/55 leading-relaxed">Agricultural economics, supply chain management in agriculture, and agripreneurship development.</p>
+        </div>
+        <div class="card p-6 fade-up" style="transition-delay:0.4s">
+          <div class="text-3xl mb-3">🚀</div>
+          <h3 class="font-serif text-xl text-cream mb-2">Entrepreneurship</h3>
+          <p class="font-sans text-xs text-cream/55 leading-relaxed">Entrepreneurship development, startup ecosystems, IPR, and gender equality in organizational contexts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="py-24 px-6 md:px-12">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-16">
+
+        <!-- Academic experience -->
+        <div>
+          <p class="section-label mb-3 fade-up">Career Journey</p>
+          <h2 class="section-title text-4xl md:text-5xl text-cream mb-10 fade-up">Academic<br><span class="text-saffron italic">Experience</span></h2>
+
+          <div class="space-y-0">
+
+            <div class="relative pl-8 pb-8 fade-up">
+              <div class="timeline-dot absolute left-0 top-1"></div>
+              <div class="timeline-line"></div>
+              <p class="font-sans text-xs text-saffron tracking-widest uppercase mb-1">Apr 2023 – Present</p>
+              <p class="font-serif text-lg text-cream">Associate Professor</p>
+              <p class="font-sans text-xs text-gold">School of Leadership & Management, MRIIRS, Faridabad</p>
+            </div>
+
+            <div class="relative pl-8 pb-8 fade-up">
+              <div class="timeline-dot absolute left-0 top-1"></div>
+              <div class="timeline-line"></div>
+              <p class="font-sans text-xs text-saffron tracking-widest uppercase mb-1">Mar 2022 – Dec 2022</p>
+              <p class="font-serif text-lg text-cream">Associate Professor</p>
+              <p class="font-sans text-xs text-gold">Trinity Institute of Professional Studies, New Delhi</p>
+            </div>
+
+            <div class="relative pl-8 pb-8 fade-up">
+              <div class="timeline-dot absolute left-0 top-1"></div>
+              <div class="timeline-line"></div>
+              <p class="font-sans text-xs text-saffron tracking-widest uppercase mb-1">Jul 2018 – Apr 2019</p>
+              <p class="font-serif text-lg text-cream">Assistant Professor</p>
+              <p class="font-sans text-xs text-gold">Doon Business School, Selaqui, Dehradun</p>
+            </div>
+
+            <div class="relative pl-8 pb-8 fade-up">
+              <div class="timeline-dot absolute left-0 top-1"></div>
+              <div class="timeline-line"></div>
+              <p class="font-sans text-xs text-saffron tracking-widest uppercase mb-1">Nov 2014 – Apr 2018</p>
+              <p class="font-serif text-lg text-cream">Assistant Professor</p>
+              <p class="font-sans text-xs text-gold">Kasturba Gandhi College for Women, Secunderabad</p>
+            </div>
+
+            <div class="relative pl-8 pb-8 fade-up">
+              <div class="timeline-dot absolute left-0 top-1"></div>
+              <div class="timeline-line"></div>
+              <p class="font-sans text-xs text-saffron tracking-widest uppercase mb-1">Dec 2012 – Jul 2014</p>
+              <p class="font-serif text-lg text-cream">Assistant Professor & Director In-Charge</p>
+              <p class="font-sans text-xs text-gold">Lexicon Institute of Management Education, Pune</p>
+            </div>
+
+            <div class="relative pl-8 fade-up">
+              <div class="timeline-dot absolute left-0 top-1"></div>
+              <p class="font-sans text-xs text-saffron tracking-widest uppercase mb-1">Jun 2005 – Mar 2009</p>
+              <p class="font-serif text-lg text-cream">Lecturer</p>
+              <p class="font-sans text-xs text-gold">Bharati Vidyapeeth's BVU IMRDA, Sangli</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Certifications & special -->
+        <div>
+          <p class="section-label mb-3 fade-up">&nbsp;</p>
+          <h2 class="section-title text-4xl md:text-5xl text-cream mb-10 fade-up">Special<br><span class="text-saffron italic">Programs</span></h2>
+
+          <div class="space-y-4">
+            <div class="card p-5 fade-up">
+              <div class="flex items-start gap-4">
+                <div class="text-2xl">🎓</div>
+                <div>
+                  <p class="font-serif text-base text-cream">Leadership & Management in New-Age Business</p>
+                  <p class="font-sans text-xs text-gold mt-1">The Wharton School, University of Pennsylvania</p>
+                  <p class="font-sans text-xs text-cream/50 mt-0.5">Sept 2022 – March 2023</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card p-5 fade-up" style="transition-delay:0.05s">
+              <div class="flex items-start gap-4">
+                <div class="text-2xl">🏦</div>
+                <div>
+                  <p class="font-serif text-base text-cream">RBI Faculty Research Scholarship</p>
+                  <p class="font-sans text-xs text-gold mt-1">Reserve Bank of India, 2017</p>
+                  <p class="font-sans text-xs text-cream/50 mt-0.5">"FinTech: A New Wave of Enriching Banking in Rural India"</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card p-5 fade-up" style="transition-delay:0.1s">
+              <div class="flex items-start gap-4">
+                <div class="text-2xl">🧘</div>
+                <div>
+                  <p class="font-serif text-base text-cream">Certified Yoga Instructor</p>
+                  <p class="font-sans text-xs text-gold mt-1">Indian Yoga Association, Kaivalyadhama, Lonavala</p>
+                  <p class="font-sans text-xs text-cream/50 mt-0.5">January 2020 · Teaching since 2019</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card p-5 fade-up" style="transition-delay:0.15s">
+              <div class="flex items-start gap-4">
+                <div class="text-2xl">🏭</div>
+                <div>
+                  <p class="font-serif text-base text-cream">Marketing Executive — Industry</p>
+                  <p class="font-sans text-xs text-gold mt-1">OMAX Cotspin Pvt. Ltd., Dhrangdhara, Gujarat</p>
+                  <p class="font-sans text-xs text-cream/50 mt-0.5">Oct 2019 – Oct 2020</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card p-5 fade-up" style="transition-delay:0.2s">
+              <div class="flex items-start gap-4">
+                <div class="text-2xl">📚</div>
+                <div>
+                  <p class="font-serif text-base text-cream">AIMA BizLab Certified Trainer</p>
+                  <p class="font-sans text-xs text-gold mt-1">All India Management Association · 2023–2024</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card p-5 fade-up" style="transition-delay:0.25s">
+              <div class="flex items-start gap-4">
+                <div class="text-2xl">🤖</div>
+                <div>
+                  <p class="font-serif text-base text-cream">Two-Week Joint FDP on AI for Teaching</p>
+                  <p class="font-sans text-xs text-gold mt-1">IIT Guwahati under MeitY, Govt. of India · 2025</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications" class="py-24 px-6 md:px-12 section-alt">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="section-label mb-3 fade-up">Academic Output</p>
+        <h2 class="section-title text-5xl md:text-6xl text-cream fade-up">Select <span class="text-saffron italic">Publications</span></h2>
+        <p class="font-sans text-sm text-cream/50 mt-4 fade-up">Scopus · IEEE · Springer · Emerald · WoS · ABDC Indexed</p>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="flex flex-wrap justify-center gap-3 mb-10 fade-up">
+        <button onclick="filterPubs('all')" class="pub-filter-btn active font-sans text-xs tracking-widest uppercase px-4 py-2 border border-saffron/40 text-saffron transition-all" data-filter="all">All</button>
+        <button onclick="filterPubs('2026')" class="pub-filter-btn font-sans text-xs tracking-widest uppercase px-4 py-2 border border-cream/20 text-cream/50 transition-all" data-filter="2026">2026</button>
+        <button onclick="filterPubs('2025')" class="pub-filter-btn font-sans text-xs tracking-widest uppercase px-4 py-2 border border-cream/20 text-cream/50 transition-all" data-filter="2025">2025</button>
+        <button onclick="filterPubs('2024')" class="pub-filter-btn font-sans text-xs tracking-widest uppercase px-4 py-2 border border-cream/20 text-cream/50 transition-all" data-filter="2024">2024</button>
+        <button onclick="filterPubs('other')" class="pub-filter-btn font-sans text-xs tracking-widest uppercase px-4 py-2 border border-cream/20 text-cream/50 transition-all" data-filter="other">Earlier</button>
+      </div>
+
+      <div id="publications-list" class="grid md:grid-cols-2 gap-5">
+
+        <!-- 2026 -->
+        <div class="card p-6 pub-item" data-year="2026">
+          <div class="flex items-start justify-between mb-3">
+            <span class="pub-tag bg-saffron/15 text-saffron border border-saffron/25">Scopus · 2026</span>
+          </div>
+          <h4 class="font-serif text-base text-cream leading-snug">Exploring the Convergence of AI and Gender Equality at Workplace: A Systematic Review</h4>
+          <p class="font-sans text-xs text-cream/45 mt-2">Organizational Resilience and Leadership Issues in the Dynamic Era — Book Chapter</p>
+        </div>
+
+        <div class="card p-6 pub-item" data-year="2026">
+          <div class="flex items-start justify-between mb-3">
+            <span class="pub-tag bg-saffron/15 text-saffron border border-saffron/25">Springer · 2026</span>
+          </div>
+          <h4 class="font-serif text-base text-cream leading-snug">Hyperparameter Optimization of ML Models for Predicting Soil Fertility</h4>
+          <p class="font-sans text-xs text-cream/45 mt-2">Lecture Notes in Networks and Systems (LNNS) — Scopus Indexed</p>
+        </div>
+
+        <div class="card p-6 pub-item" data-year="2026">
+          <div class="flex items-start justify-between mb-3">
+            <span class="pub-tag bg-saffron/15 text-saffron border border-saffron/25">Scopus · 2026</span>
+          </div>
+          <h4 class="font-serif text-base text-cream leading-snug">Generative AI in Human Resource Management: Trends and Emerging Strategies</h4>
+          <p class="font-sans text-xs text-cream/45 mt-2">Organizational Resilience and Leadership Issues in the Dynamic Era</p>
+        </div>
+
+        <div class="card p-6 pub-item" data-year="2025">
+          <div class="flex items-start justify-between mb-3">
+            <span class="pub-tag bg-gold/15 text-gold border border-gold/25">Emerald · 2025</span>
+          </div>
+          <h4 class="font-serif text-base text-cream leading-snug">Prospects and Capacity Building of Community-Based Ecotourism (CBET) in Indian Tourism</h4>
+          <p class="font-sans text-xs text-cream/45 mt-2">Emerald Publishing — Scopus Indexed Book Chapter</p>
+        </div>
+
+        <div class="card p-6 pub-item" data-year="2025">
+          <div class="flex items-start justify-between mb-3">
+            <span class="pub-tag bg-gold/15 text-gold border border-gold/25">Springer · 2025</span>
+          </div>
+          <h4 class="font-serif text-base text-cream leading-snug">Analyzing the Relationship Between Mutual Fund Flows and NAV Corrections</h4>
+          <p class="font-sans text-xs text-cream/45 mt-2">Springer Nature — Evidence from Historical Data</p>
+        </div>
+
+        <div class="card p-6 pub-item" data-year="2024">
+          <div class="flex items-start justify-between mb-3">
+            <span class="pub-tag bg-moss/30 text-green-400 border border-green-700/30">IEEE · WoS · 2024</span>
+          </div>
+          <h4 class="font-serif text-base text-cream leading-snug">Attitude Towards eHealth Services: Government Initiatives in India</h4>
+          <p class="font-sans text-xs text-cream/45 mt-2">ICRITO 2024 — IEEE Xplore · Scopus & WoS Indexed</p>
+        </div>
+
+        <div class="card p-6 pub-item" data-year="2024">
+          <div class="flex items-start justify-between mb-3">
+            <span class="pub-tag bg-moss/30 text-green-400 border border-green-700/30">IEEE · 2024</span>
+          </div>
+          <h4 class="font-serif text-base text-cream leading-snug">Ensemble Machine Learning with Technical Indicators for FX Volatility Prediction</h4>
+          <p class="font-sans text-xs text-cream/45 mt-2">ICISAA 2024 — IEEE Xplore · Scopus Indexed</p>
+        </div>
+
+        <div class="card p-6 pub-item" data-year="2024">
+          <div class="flex items-start justify-between mb-3">
+            <span class="pub-tag bg-moss/30 text-green-400 border border-green-700/30">Scopus · 2024</span>
+          </div>
+          <h4 class="font-serif text-base text-cream leading-snug">Understanding Drivers of Continued Use of Online Food Delivery Platforms among Indian Consumers</h4>
+          <p class="font-sans text-xs text-cream/45 mt-2">Indian Journal of Agricultural Economics, Vol. 79, Issue 2</p>
+        </div>
+
+        <div class="card p-6 pub-item" data-year="other">
+          <div class="flex items-start justify-between mb-3">
+            <span class="pub-tag bg-bark/40 text-parchment border border-parchment/15">ABDC-C · 2023</span>
+          </div>
+          <h4 class="font-serif text-base text-cream leading-snug">Precision Marketing Strategy for E-Commerce using Big Data Technology</h4>
+          <p class="font-sans text-xs text-cream/45 mt-2">Journal of Informatics Education and Research, Vol. 3, Issue 2</p>
+        </div>
+
+        <div class="card p-6 pub-item" data-year="other">
+          <div class="flex items-start justify-between mb-3">
+            <span class="pub-tag bg-bark/40 text-parchment border border-parchment/15">Scopus · 2017</span>
+          </div>
+          <h4 class="font-serif text-base text-cream leading-snug">Revolution of Technological Innovation in Indian Banking Sector: Problems and Prospects</h4>
+          <p class="font-sans text-xs text-cream/45 mt-2">International Journal of Economic Research</p>
+        </div>
+
+      </div>
+
+      <!-- Patent -->
+      <div class="mt-10 card p-6 border-gold/30 fade-up" style="background: linear-gradient(135deg, rgba(212,168,83,0.06), rgba(44,36,32,0.5))">
+        <div class="flex items-center gap-4">
+          <div class="text-3xl">⚖️</div>
+          <div>
+            <span class="pub-tag bg-gold/20 text-gold border border-gold/30 mb-2 inline-block">Patent · 2024</span>
+            <h4 class="font-serif text-base text-cream">Simulation-Based E-Learning System for Management Decision and Its Effect</h4>
+            <p class="font-sans text-xs text-cream/45 mt-1">Published in Indian Patent Office Journal</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements" class="py-24 px-6 md:px-12">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="section-label mb-3 fade-up">Recognitions</p>
+        <h2 class="section-title text-5xl md:text-6xl text-cream fade-up">Leadership &amp; <span class="text-saffron italic">Achievements</span></h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5 mb-12">
+
+        <div class="card p-6 fade-up">
+          <div class="text-2xl mb-3">🏆</div>
+          <h4 class="font-serif text-base text-cream mb-2">RBI Research Scholarship</h4>
+          <p class="font-sans text-xs text-cream/55">Reserve Bank of India Scholarship for Faculty Members, 2017. Project: "FinTech: A New Wave of Enriching Banking in Rural India"</p>
+        </div>
+
+        <div class="card p-6 fade-up" style="transition-delay:0.07s">
+          <div class="text-2xl mb-3">👑</div>
+          <h4 class="font-serif text-base text-cream mb-2">NCC Gold Medal</h4>
+          <p class="font-sans text-xs text-cream/55">Gold Medal — Best Cadet of Six Maharashtra Girls BN NCC, 1999. Selected for Rajpath Marching at Republic Day Camp, New Delhi.</p>
+        </div>
+
+        <div class="card p-6 fade-up" style="transition-delay:0.14s">
+          <div class="text-2xl mb-3">🎓</div>
+          <h4 class="font-serif text-base text-cream mb-2">University 1st Rank</h4>
+          <p class="font-sans text-xs text-cream/55">First Rank in B.A. Economics, Shivaji University, Kolhapur with 70.94%. Awarded with University Scholarship.</p>
+        </div>
+
+        <div class="card p-6 fade-up" style="transition-delay:0.21s">
+          <div class="text-2xl mb-3">🌐</div>
+          <h4 class="font-serif text-base text-cream mb-2">Wharton School Certification</h4>
+          <p class="font-sans text-xs text-cream/55">Successfully completed Leadership and Management in New-Age Business — University of Pennsylvania, 2022–2023.</p>
+        </div>
+
+        <div class="card p-6 fade-up" style="transition-delay:0.28s">
+          <div class="text-2xl mb-3">📋</div>
+          <h4 class="font-serif text-base text-cream mb-2">SPOC – PRISM 2024</h4>
+          <p class="font-sans text-xs text-cream/55">Single Point of Contact for the Emerging Leaders Competition — PRISM 2024, and for Manav Rachna Strategic Mentoring Board.</p>
+        </div>
+
+        <div class="card p-6 fade-up" style="transition-delay:0.35s">
+          <div class="text-2xl mb-3">🎤</div>
+          <h4 class="font-serif text-base text-cream mb-2">Guest Speaker — RBI</h4>
+          <p class="font-sans text-xs text-cream/55">Invited as Guest Speaker, Knowledge Committee, FIDD, Reserve Bank of India, Hyderabad (2018). Co-Chair of International Conference at Bhavan's College, 2018.</p>
+        </div>
+
+      </div>
+
+      <!-- Roles row -->
+      <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 fade-up">
+        <div class="card p-4 text-center">
+          <p class="font-sans text-xs text-saffron tracking-widest uppercase mb-1">Role</p>
+          <p class="font-serif text-sm text-cream">Gender Sensitisation Cell Coordinator</p>
+        </div>
+        <div class="card p-4 text-center">
+          <p class="font-sans text-xs text-saffron tracking-widest uppercase mb-1">Role</p>
+          <p class="font-serif text-sm text-cream">Core Committee — HR Round Table 2025</p>
+        </div>
+        <div class="card p-4 text-center">
+          <p class="font-sans text-xs text-saffron tracking-widest uppercase mb-1">Role</p>
+          <p class="font-serif text-sm text-cream">Master Trainer — TISS & NUSSD, BFS Sector</p>
+        </div>
+        <div class="card p-4 text-center">
+          <p class="font-sans text-xs text-saffron tracking-widest uppercase mb-1">Member</p>
+          <p class="font-serif text-sm text-cream">INSEE — Indian Society for Ecological Economics</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FOOTER -->
+  <footer class="py-16 px-6 md:px-12 text-center section-alt">
+    <div class="max-w-6xl mx-auto">
+      <div class="mandala w-64 h-64 mx-auto relative mb-8">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-10">
+          <circle cx="100" cy="100" r="90" stroke="#D4A853" stroke-width="1"/>
+          <circle cx="100" cy="100" r="60" stroke="#D4A853" stroke-width="1"/>
+          <circle cx="100" cy="100" r="30" stroke="#D4A853" stroke-width="1"/>
+          <polygon points="100,10 190,100 100,190 10,100" fill="none" stroke="#D4A853" stroke-width="0.5"/>
+          <polygon points="100,40 160,100 100,160 40,100" fill="none" stroke="#E07B39" stroke-width="0.5"/>
+        </svg>
+      </div>
+
+      <h3 class="font-display text-2xl text-cream tracking-widest mb-2">Dr. Bhakti Pawar</h3>
+      <p class="font-serif text-gold italic text-lg mb-6">"Believe in Yourself"</p>
+
+      <div class="flex flex-wrap justify-center gap-6 mb-8">
+        <a href="mailto:bhaktijit5eco@gmail.com" class="font-sans text-xs text-cream/50 hover:text-saffron transition-colors tracking-wide">bhaktijit5eco@gmail.com</a>
+        <span class="text-cream/20">·</span>
+        <a href="mailto:bhaktipawar.slm@mriu.edu.in" class="font-sans text-xs text-cream/50 hover:text-saffron transition-colors tracking-wide">bhaktipawar.slm@mriu.edu.in</a>
+        <span class="text-cream/20">·</span>
+        <span class="font-sans text-xs text-cream/50">+91 889 790 1055</span>
+      </div>
+
+      <p class="font-sans text-xs text-cream/25 tracking-wide">Associate Professor · School of Leadership and Management · MRIIRS, Faridabad</p>
+      <p class="font-sans text-xs text-cream/20 mt-2">Life Member, INSEE · New Delhi</p>
+    </div>
+  </footer>
+
+  <script>
+    // ─── NAVBAR scroll ───
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ─── HAMBURGER ───
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburgerBtn.addEventListener('click', () => {
+      hamburgerBtn.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburgerBtn.classList.remove('active');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // ─── TYPING ANIMATION ───
+    const phrases = [
+      "Economist. Educator. Researcher.",
+      "Associate Professor at MRIIRS Faridabad.",
+      "Ph.D. in Economics of Ecotourism.",
+      "FinTech & AI Researcher.",
+      "Wharton Certified Leader.",
+      "Certified Yoga Practitioner.",
+      "RBI Research Scholar.",
+      "Empowering minds, inspiring futures."
+    ];
+    let phraseIdx = 0, charIdx = 0, deleting = false;
+    const typedEl = document.getElementById('typed-text');
+
+    function typeLoop() {
+      const current = phrases[phraseIdx];
+      if (!deleting) {
+        typedEl.textContent = current.slice(0, charIdx + 1);
+        charIdx++;
+        if (charIdx === current.length) {
+          deleting = true;
+          setTimeout(typeLoop, 2200);
+          return;
+        }
+      } else {
+        typedEl.textContent = current.slice(0, charIdx - 1);
+        charIdx--;
+        if (charIdx === 0) {
+          deleting = false;
+          phraseIdx = (phraseIdx + 1) % phrases.length;
+          setTimeout(typeLoop, 400);
+          return;
+        }
+      }
+      setTimeout(typeLoop, deleting ? 45 : 70);
+    }
+    setTimeout(typeLoop, 800);
+
+    // ─── SCROLL FADE-IN ───
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    // ─── PUBLICATION FILTER ───
+    function filterPubs(year) {
+      const items = document.querySelectorAll('.pub-item');
+      items.forEach(item => {
+        if (year === 'all' || item.dataset.year === year) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+      document.querySelectorAll('.pub-filter-btn').forEach(btn => {
+        const isActive = btn.dataset.filter === year;
+        btn.classList.toggle('active', isActive);
+        btn.style.borderColor = isActive ? 'rgba(224,123,57,0.6)' : 'rgba(245,239,224,0.15)';
+        btn.style.color = isActive ? '#E07B39' : 'rgba(245,239,224,0.4)';
+        btn.style.background = isActive ? 'rgba(224,123,57,0.08)' : 'transparent';
+      });
+    }
+
+    // ─── ACTIVE NAV HIGHLIGHT on scroll ───
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
+      });
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.style.color = link.getAttribute('href') === `#${current}` ? '#E07B39' : '';
+      });
+    });
+  </script>
+</body>
+</html>
